@@ -1,6 +1,7 @@
 name: model-training
 on:
   push: {}
+
 permissions:
   issues: write
   contents: write
@@ -29,18 +30,20 @@ jobs:
           pip install -r requirements.txt
           pip install --upgrade pip
           python train.py
+
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add feature_importance.png residuals.png
           
           echo "## Feature Importance" >> README.md
           echo "![Feature Importance](feature_importance.png)" >> README.md
-
+          
           echo "## Residuals" >> README.md
           echo "![Residuals](residuals.png)" >> README.md
-
+          
           echo "## Metrics" >> README.md
           cat metrics.txt >> README.md
+          
+          git add feature_importance.png residuals.png README.md
 
           git commit -m "Add feature_importance.png residuals.png"
           git push origin ${{ github.head_ref }}
