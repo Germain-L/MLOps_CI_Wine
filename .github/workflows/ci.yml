@@ -1,7 +1,9 @@
 name: model-training
 on:
   push: {}
-
+permissions:
+  issues: write
+  contents: write
 jobs:
   model_training_job:
     name: Model Training
