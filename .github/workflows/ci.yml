@@ -29,3 +29,9 @@ jobs:
           pip install -r requirements.txt
           pip install --upgrade pip
           python train.py
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add feature_importance.png residuals.png
+          git commit -m "Add feature_importance.png residuals.png"
+          git push origin ${{ github.head_ref }}
+
