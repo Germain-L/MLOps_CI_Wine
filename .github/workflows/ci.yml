@@ -40,11 +40,12 @@ jobs:
           python train.py
 
           npm install -g @dvcorg/cml
-          echo "## Model metrics" > data.md
+          echo "## Metrics" > data.md
           cat metrics.txt >> data.md
-
-          echo '![](./feature_importance.png "Feature Importance")' >> data.md
-          echo '![](./residuals.png "Residuals")' >> data.md
+          
+          echo "## Plots" >> data.md
+          echo '![](./feature_importance.png "feature importance")' >> data.md
+          echo '![](./residuals.png "residuals")' >> data.md
 
           cml comment create data.md
 
