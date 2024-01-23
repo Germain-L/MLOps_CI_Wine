@@ -9,7 +9,7 @@ permissions:
   
 jobs:
   model_training_job:
-    name: Model Training
+    name: Examople Training Job
     runs-on: ubuntu-latest
 
     steps:
@@ -18,21 +18,19 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Set up Python
+      - name: Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.11'
       
-      - name: Set up Node
+      - name: Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
 
-      - name: Set up CML
+      - name: CML
         uses: iterative/setup-cml@v1
           
-
-
       - name: Run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,9 +40,11 @@ jobs:
           python train.py
 
           npm install -g @dvcorg/cml
-          echo "## Model metrics" > report.md
-          cat metrics.txt >> report.md
-          echo '![](./feature_importance.png "Feature Importance")' >> report.md
-          echo '![](./residuals.png "Residuals")' >> report.md
-          cml comment create report.md
+          echo "## Model metrics" > data.md
+          cat metrics.txt >> data.md
+
+          echo '![](./feature_importance.png "Feature Importance")' >> data.md
+          echo '![](./residuals.png "Residuals")' >> data.md
+
+          cml comment create data.md
 
