@@ -8,3 +8,10 @@
 ## Metrics
 Training variance explained: 33.0%
 Test variance explained: 32.0%
+## Feature Importance
+![Feature Importance](feature_importance.png)
+## Residuals
+![Residuals](residuals.png)
+## Metrics
+Training variance explained: 33.0%
+Test variance explained: 32.0%
